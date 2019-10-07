@@ -1,0 +1,6 @@
+
+  "scripts": {
+    "start": "cd Client && yarn start",
+    "build": "cd Client && yarn build",
+  }
+  
