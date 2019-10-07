@@ -1,0 +1,127 @@
+@mixin for-phone-only-portrait {
+    @media (max-width: 599px) { @content; }
+  }
+  @mixin for-phone-landscape-up {
+    @media (min-width: 0px) and (orientation:landscape) { @content; }
+  }
+  @mixin for-tablet-portrait-up {
+    @media (min-width: 600px) and (orientation:portrait) { @content; }
+  }
+  @mixin for-tablet-landscape-up {
+    @media (min-width: 900px) and (orientation:landscape) { @content; }
+  }
+  @mixin for-desktop-up {
+    @media (min-width: 1200px) and (orientation:landscape) { @content; }
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 8px;
+    font-family: 'Arvo', bold;
+    background-color:black;
+  }
+  .pageLayout{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .pageContentLayout{
+    flex: 1 0 auto;
+    margin-top: 4rem
+  }
+.appBar{
+  background-color:rgba(245, 4, 4, 0.575) !important;
+  .toolBar{
+    width:90vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center
+  }
+}  
+  .center {
+    text-align: center;
+    justify-content: center;
+    align-self: center;
+  }
+  .slider{
+    display: flex;
+    overflow: hidden;
+  }
+  .slideWrapper{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style:none;
+    &::-webkit-scrollbar{
+      width:0;
+      background:transparent
+    }
+  }
+  .movieIcon{
+    margin-right: 1rem;
+    align-items: center;
+    font-size: 2rem;
+    color: red
+    }
+  .tvIcon{
+    margin-right: 1rem;
+    align-items: center;
+    font-size: 2rem;
+    color: blue
+    }
+  .personIcon{
+    margin-right: 1rem;
+    align-items: center;
+    font-size: 2rem;
+    color: green
+    }
+
+  @include for-phone-only-portrait{
+    .largeCard{
+      min-width: 86vw !important;
+      margin: 2vw !important;
+      border-radius: 10 !important;
+      box-shadow: 2.5px 2.5px 4px 3px rgba(0,0,0,0.75) !important;
+    }
+    .largeCardMedia{
+      position: 'relative' !important;
+      padding-top: 70%;
+    }
+    
+    .Card{
+      min-width: 19vh !important;
+      margin: 2vw !important;
+      border-radius: 10 !important;
+      box-shadow: 2.5px 2.5px 4px 3px rgba(0,0,0,0.75) !important;
+    }
+    .CardMediaWrapper{
+      position: relative;
+    }
+    .CardMedia{
+      position: 'relative' !important;
+      min-height: 20vh !important;
+      padding-top: 56.25%;
+    }
+    .CardOverlay{
+      display:flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      max-height:10%;
+      position: absolute;
+      background-color: rgba(10, 10, 10, 0.7);
+      bottom:0;
+      left: 0;
+      right: 0;
+    }
+    .overlayText{
+      color:white !important
+    }
+  }
+  @include for-phone-landscape-up{}
+  @include for-tablet-portrait-up{}
+  @include for-tablet-landscape-up{}
+  @include for-desktop-up{}

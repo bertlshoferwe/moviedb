@@ -1,0 +1,35 @@
+{
+  "name": "moviedatabase",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^4.4.0",
+    "connected-react-router": "^4.5.0",
+    "firebase": "^6.5.0",
+    "history": "^4.7.2",
+    "lodash": "^4.17.4",
+    "query-string": "^5.1.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "3.1.1",
+    "redux": "^3.7.2",
+    "redux-history": "^1.0.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:3001/",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
