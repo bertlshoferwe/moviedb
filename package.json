@@ -1,6 +1,11 @@
-
+{
+  "name": "moviedatabase",
+  "version": "1.0.0",
+  "private": true,
+  
   "scripts": {
     "start": "cd Client && yarn start",
     "build": "cd Client && yarn build",
   }
-  
+}
+ 
