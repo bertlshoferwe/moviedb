@@ -1,0 +1,163 @@
+@mixin for-phone-only-portrait {
+    @media (max-width: 599px) { @content; }
+  }
+  @mixin for-phone-landscape-up {
+    @media (min-width: 0px) and (orientation:landscape) { @content; }
+  }
+  @mixin for-tablet-portrait-up {
+    @media (min-width: 600px) and (orientation:portrait) { @content; }
+  }
+  @mixin for-tablet-landscape-up {
+    @media (min-width: 900px) and (orientation:landscape) { @content; }
+  }
+  @mixin for-desktop-up {
+    @media (min-width: 1200px) and (orientation:landscape) { @content; }
+  }
+ 
+  .slider{
+    display: flex;
+    overflow: hidden;
+  }
+  .slideWrapper{
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style:none;
+    &::-webkit-scrollbar{
+      width:0;
+      background:transparent
+    }
+  }
+  .movieIcon{
+    margin-right: 1rem;
+    align-items: center;
+    font-size: 2rem;
+    color: red
+    }
+  .tvIcon{
+    margin-right: 1rem;
+    align-items: center;
+    font-size: 2rem;
+    color: blue
+    }
+  .personIcon{
+    margin-right: .5rem;
+    align-items: center;
+    font-size: 1.5rem;
+    color: green
+    }
+
+    .topHomeImageWrapper{
+      max-width: 100vw; 
+      margin: auto;
+      position:absolute; 
+      .image{
+       -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0) 50%);
+      width: 100vw;
+      }
+      .buttonWrapper{
+        width: 100vw;
+        height:100%;
+        .mediaPopButton{
+          position: absolute;
+          color:white !important;
+          border-color: white !important
+        }
+        .fabOutline{
+          position: absolute;
+          background-color: transparent;
+          color:white !important;
+          box-shadow: -1px 1px 20px (white) !important
+        }
+      }
+    };
+    .largeCard{
+      border-radius: 10 !important;
+      box-shadow: 2.5px 2.5px 4px 3px rgba(0,0,0,0.75) !important;
+    }
+    .largeCardMedia{
+      position: 'relative' !important;
+      height: 100% !important;
+      text-align: center !important;
+    }
+    .Card{
+      border-radius: 10 !important;
+      box-shadow: 2.5px 2.5px 4px 3px rgba(0,0,0,0.75) !important;
+    }
+    .CardMediaWrapper{
+      position: relative;
+      height: 100% !important
+    }
+    .CardMedia{
+      position: 'relative' !important;
+      margin: auto !important; 
+      text-align: center !important;
+      
+    }
+    .CardOverlay{
+      display:flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      position: absolute;
+      background-color: rgba(10, 10, 10, 0.7);
+      bottom:0;
+      left: 0;
+      right: 0;
+    }
+    .overlayText{
+      color:white !important
+    }
+    .lowerHomePage{
+      margin-top:30vh
+    }
+  @include for-phone-only-portrait{
+    .topHomeImageWrapper{
+      top:3.5rem; 
+      left:0; 
+      .buttonWrapper{
+        .mediaPopButton{
+          bottom: 25%;
+          right: 5vw;
+        }
+        .fabOutline{
+          bottom: 51%;
+          right: 48%;
+        }
+      }
+    };
+    .largeCard{
+      min-width: 75vw !important;
+      margin: 2vw !important;
+    }
+    .largeCardMedia{
+      min-height: 20vh !important;
+      padding-top: 40%;
+    }
+    .largeIconMedia{
+      font-size: 7.5rem;
+      margin-top:-25% !important;
+    }
+    .Card{
+      min-width: 19vh !important;
+      margin: 2vw !important;
+    }
+    .CardMedia{
+      min-height: 20vh !important;
+      padding-top: 56.25%;
+    }
+    .CardOverlay{
+      max-height:10%;
+    }
+    .iconMedia{
+      font-size: 7.5rem;
+      margin-top:-45% !important;
+    }
+
+  }
+  @include for-phone-landscape-up{}
+  @include for-tablet-portrait-up{}
+  @include for-tablet-landscape-up{}
+  @include for-desktop-up{}

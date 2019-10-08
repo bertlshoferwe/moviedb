@@ -4,7 +4,8 @@ import authReducer from './firebaseAuth/reducer'
 import spinner from './ui/spinner/reducer'
 import homeReducer from './apiMedia/popularMedia/reducer'
 import queryReducer from './apiMedia/searchQuery/reducer'
-import movieInfoReview  from './apiMedia/mediaInfo.js/reducer'
+import movieInfoReview  from './apiMedia/mediaInfo/reducer'
+import trailers from './apiMedia/trailerInfo/reducer'
 
 //////////////////////////////////
 //// Export Reducers/////////////
@@ -17,6 +18,7 @@ const Reducers = combineReducers({
     home: homeReducer,
     search: queryReducer,
     movieInfo: movieInfoReview,
+    trailers: trailers
 
 
 })
@@ -32,4 +34,6 @@ export * from './firebaseAuth/action'
 export * from './ui/spinner/action'
 export * from './apiMedia/popularMedia/action'
 export * from './apiMedia/searchQuery/action'
-export * from './apiMedia/mediaInfo.js/action'
+export * from './apiMedia/mediaInfo/action'
+export * from './navigation/action'
+export * from './apiMedia/trailerInfo/action'

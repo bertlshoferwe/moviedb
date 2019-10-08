@@ -8,11 +8,11 @@ import { connectRouter, routerMiddleware } from 'connected-react-router'
 import thunk                                from 'redux-thunk';
 import Reducers                           from './Reducers';
 import './style.scss';
-import Container from '@material-ui/core/Container';
-// import SearchBar                          from './components/Common/searchBar.js'
-import Header                             from './components/Common/Header/Header.js';
+import Container                           from '@material-ui/core/Container';
+import SearchFab                          from './components/searchFab/SearchFab'
+import Header                             from './components/Header/Header';
 //import Footer                             from './components/Common/Footer'
-import Home                               from './components/home';
+import Home                               from './pages/Home/home';
 // import Movie                               from './components/movie';
 // import Tv                                  from './components/tv';
 // import Person                             from './components/person';
@@ -39,7 +39,7 @@ function App() {
 
     return ( 
           <Provider store={store}>
-                  <ConnectedRouter onUpdate={() => window.scrollTo(0,0)} history={history}>
+                  <ConnectedRouter history={history}>
               
                   <div className='pageLayout'>
 
@@ -48,14 +48,14 @@ function App() {
                       < Container className='pageContentLayout'>
                           <Switch>
                               <Route exact path="/" component={Home} />
-                                 {/* <Route path="/movie" component={Movie} /> 
-                                <Route path="/tv" component={Tv} />
-                                <Route path="/person/" component={Person} />
-                                <Route path="/searchResults" component={SearchResults} />  */}
+                                <Route path="/movie" component={Home} /> 
+                                <Route path="/tv" component={Home} />
+                                <Route path="/person/" component={Home} />
+                                <Route path="/searchResults" component={Home} /> 
                                              
                           </Switch>
                       </ Container>
-                      {/* <SearchBar /> */}
+                      <SearchFab />
                       {/* <Footer /> */}
                   </div>    
 
