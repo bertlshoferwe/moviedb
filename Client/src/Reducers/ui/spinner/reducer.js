@@ -14,8 +14,10 @@ export default (state = initialState, action) => {
 
   case actionTypes.STOP_SPINNER:
     return stopSpinner(state)
+    
   default:
     return state;
+
 function startSpinner(state) {
   return {
     ...state,

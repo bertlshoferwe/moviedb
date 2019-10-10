@@ -12,7 +12,6 @@ const INITIAL_STATE =  {
             "backdrop_path": '',
             "poster_path": '',
             "media_type": '',
-            "loading": true
             },
         ], 
     movie_popular:[
@@ -73,8 +72,10 @@ export default (state = INITIAL_STATE, action) => {
     //incase of any error retrieving fetch info in action
         case actionTypes.HOME_ERROR:
             return{ ...state, homeError: action.payload }
-        default:
-         return state;
-    } 
+        default: {
+            return {
+                ...state
+            }
+            }
     
-};
+};}

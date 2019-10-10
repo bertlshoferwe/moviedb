@@ -33,8 +33,11 @@ export default (state = INITIAL_STATE, action) => {
             return{ ...state, results: action.payload}
         case actionTypes.ERROR:
             return{ ...state, error: action.payload }
-        default:
-            return state;
+        default: {
+            return {
+                ...state
+            }
+            }
     } 
     
 };

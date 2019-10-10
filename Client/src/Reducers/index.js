@@ -6,6 +6,7 @@ import homeReducer from './apiMedia/popularMedia/reducer'
 import queryReducer from './apiMedia/searchQuery/reducer'
 import movieInfoReview  from './apiMedia/mediaInfo/reducer'
 import trailers from './apiMedia/trailerInfo/reducer'
+import modalOfSearch from './ui/searchModal/reducer'
 
 //////////////////////////////////
 //// Export Reducers/////////////
@@ -18,7 +19,8 @@ const Reducers = combineReducers({
     home: homeReducer,
     search: queryReducer,
     movieInfo: movieInfoReview,
-    trailers: trailers
+    trailers: trailers,
+    search_Model: modalOfSearch
 
 
 })
@@ -37,3 +39,4 @@ export * from './apiMedia/searchQuery/action'
 export * from './apiMedia/mediaInfo/action'
 export * from './navigation/action'
 export * from './apiMedia/trailerInfo/action'
+export * from './ui/searchModal/action'
