@@ -22,9 +22,16 @@
         background-color: #7b4397;
         color: white
       }
-      .resultItems{
-        position: absolute
-      }
+  }
+  .searchInput {
+    z-index: 5;
+    background-color: White;
+    position: sticky; top: 0px;
+    height: 4rem
+  }
+  .listHeight{
+    z-index: 1;
+    max-height:8rem !important
   }
 
   @include for-phone-only-portrait{}

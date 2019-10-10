@@ -19,7 +19,7 @@ export const actionTypes = {
     }
 
   export function updateSearchValue( text ) {
-
+    console.log(text)
     const queryString = 'https://api.themoviedb.org/3/search/multi?api_key=04ac5e20700da696a4b482b8e3d1c26e&language=en-US&query=' + text + '&page=1&include_adult=false'
     return (dispatch) => {
       

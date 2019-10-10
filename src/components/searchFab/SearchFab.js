@@ -1,9 +1,9 @@
 
 import React, { Component }     from 'react';
 import { connect }              from 'react-redux';
-import { searchModalOpen, searchModalClose, updateSearchValue } from'../../Reducers';
+import { searchModalOpen, searchModalClose, updateSearchValue, pageNav } from'../../Reducers';
 import {withRouter} from 'react-router-dom';
-import { Fab, Dialog, DialogContent, TextField, List, ListItem, ListItemAvatar, ListItemText, Avatar } from '@material-ui/core'
+import { Fab, Dialog, DialogTitle, DialogContent, TextField, List, ListItem, ListItemAvatar, ListItemText, Avatar } from '@material-ui/core'
 import './fab.scss'
 
 
@@ -17,6 +17,7 @@ import './fab.scss'
          this.openSearch = this.openSearch.bind(this)
          this.closeSearch = this.closeSearch.bind(this)
          this.handleSearchChange = this.handleSearchChange.bind(this)
+         this.pageNavigate = this.pageNavigate.bind(this)
         
     }
 
@@ -33,18 +34,21 @@ import './fab.scss'
 
     }
 
-    render() {
-        const { isOpen, searchValue, searchBarResults, hey } = this.props
-        console.log(searchValue)
-        console.log(searchBarResults)
-        console.log(isOpen)
-        console.log(hey)
+    pageNavigate(info) {
+        console.log(info)
+        // Directs to correct page based upon selected item
+        this.props.pageNav(info)
+    }
 
+    render() {
+        const { isOpen, searchValue, searchBarResults } = this.props
+
+        // eslint-disable-next-line
          const searchMedia = searchBarResults.map((results) => {
 
             switch(results.media_type){
                 case 'movie':
-                   return( <ListItem key={results.id} >
+                   return( <ListItem key={results.id} button onClick={() => {this.pageNavigate(results)} } >
                         <ListItemAvatar>
                             <Avatar>
                                 <i className="material-icons movieIcon ">movie</i>
@@ -54,7 +58,7 @@ import './fab.scss'
                     </ListItem>
                    )
                 case 'tv':
-                    return(<ListItem key={results.id} >
+                    return(<ListItem key={results.id}  button onClick={() => {this.pageNavigate(results)} } >
                         <ListItemAvatar>
                             <Avatar>
                                 <i className="material-icons tvIcon ">tv</i>
@@ -64,7 +68,7 @@ import './fab.scss'
                     </ListItem>)
 
                 case 'person':
-                   return(<ListItem key={results.id}>
+                   return(<ListItem key={results.id} button onClick={() => {this.pageNavigate(results)} } >
                         <ListItemAvatar>
                             <Avatar>
                                 <i className="material-icons personIcon ">person</i>
@@ -83,22 +87,23 @@ import './fab.scss'
                                 onClose={ () => { this.closeSearch() } } 
                                 aria-labelledby="form-dialog-title"
                                 >
+                                <DialogTitle className='searchInput'>
+                                    <TextField
+                                        autoFocus
+                                        margin="dense"
+                                        id="title"
+                                        label="Search for some media"
+                                        type="text"
+                                        onChange={ this.handleSearchChange }
+                                        value={searchValue}
+                                        fullWidth
+                                    />
+                                </DialogTitle>
                                 <DialogContent>
-                                <TextField
-                                    autoFocus
-                                    margin="dense"
-                                    id="title"
-                                    label="Search for some media"
-                                    type="text"
-                                    onChange={ this.handleSearchChange }
-                                    value={searchValue}
-                                    fullWidth
-                                />
-                                {/* Add some media for autocomplete form use searchBarResults */}
+                                    <List className='listHeight'>
+                                        {searchMedia}   
+                                    </List>
                                 </DialogContent>
-                                <List >
-                                    {searchMedia}   
-                                </List>
                             </Dialog>
                                     
     
@@ -130,7 +135,8 @@ const mapDispatchToProps = (dispatch) => {
     return{
         searchModalOpen:(data) => dispatch( searchModalOpen(data)),
         searchModalClose:(data) => dispatch( searchModalClose(data)),
-        updateSearchValue:(data) => dispatch( updateSearchValue(data))
+        updateSearchValue:(data) => dispatch( updateSearchValue(data)),
+        pageNav:(data) => dispatch( pageNav(data)),
     };
 };
 
