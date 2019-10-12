@@ -17,7 +17,7 @@ const initialState = {
           "media_type": '',
           }, 
         ]
-}
+};
 
 export default (state = initialState, action) => {
   switch(action.type) {

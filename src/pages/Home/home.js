@@ -12,33 +12,18 @@ class Home extends Component {
         super(props);
         this.state = {
             imageUrl: 'https://image.tmdb.org/t/p/w500',
-            height: '',
-            width: '',
             id: '',
-            mediaType: '',
+            mediaType: '', 
         };
   
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
         this.pageNavigate = this.pageNavigate.bind(this)
-        this.openTrailer = this.openTrailer.bind(this)
+        this.isTrailerOpen = this.isTrailerOpen.bind(this)
     }
 
 
 
     componentDidMount() { 
         this.gatherAllInfo()
-        window.addEventListener('resize', this.updateWindowDimensions);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.updateWindowDimensions);
-    }
-    // Update window dimensions
-    updateWindowDimensions() {
-        this.setState({
-            Height: window.innerHeight,
-            Width: window.innerWidth
-        });
     }
 
     gatherAllInfo(){
@@ -46,9 +31,10 @@ class Home extends Component {
         
     }
 
-    openTrailer(info){
+    isTrailerOpen(info){
 
         switch( info.media_type ){
+
             case 'movie':
                 this.props.MovieTrailer(info.id)
                 break;
@@ -56,6 +42,7 @@ class Home extends Component {
             case 'tv':
                 this.props.TvTrailer(info.id)
                 break;
+
             default:
                 break;
         }
@@ -80,7 +67,7 @@ class Home extends Component {
                                 < BackgroundImage 
                                 data={this.props.mediaPopular} 
                                 selected={this.pageNavigate}
-                                trailerSelect={ this.openTrailer }
+                                trailerSelect={ this.isTrailerOpen }
                                 />
                             </Suspense>
 
@@ -150,9 +137,8 @@ const mapStateToProps = state => {
     const moviePopular = state.home.movie_popular
     const tvPopular = state.home.tv_popular
     const peoplePopular = state.home.people_popular
-    const movieTrailer = state.trailers.movieTrailer
 
-    return { mediaPopular, moviePopular, tvPopular, peoplePopular, movieTrailer };
+    return { mediaPopular, moviePopular, tvPopular, peoplePopular };
 }
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,24 +1,24 @@
 import { actionTypes }  from './action'
 
-const INITIAL_STATE =  {
-    movieTrailer: {
+const initialState = {
+    isTrailerOpen: false,
+    trailerKey: {
                     name:'',
                     key:'',
                 },
-    tvTrailer: {
-                name:'',
-                key:'',
-            },
     error: '',
 };
-export default (state = INITIAL_STATE, action) => {
-    switch (action.type){
-        case actionTypes.TVTRAILER:
-            return{ ...state, tvTrailer: action.payload.videos.results}[0]
-        case actionTypes.MOVIETRAILER:
-            return{ ...state, movieTrailer: action.payload.videos.results[0] }
-        default:
-         return state;
-    } 
-    
-};
+
+export default (state = initialState, action) => {
+    switch(action.type) {
+  
+    case actionTypes.OPEN_TRAILER:
+      return {...state, isTrailerOpen: true, trailerKey: action.payload.videos.results[0] }
+  
+    case actionTypes.CLOSE_TRAILER:
+      return {...state, isTrailerOpen: false, trailerKey: { name:'', key:'' } }
+      
+    default:
+      return state;
+  
+  }}

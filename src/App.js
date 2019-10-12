@@ -11,6 +11,7 @@ import './style.scss';
 import Container                           from '@material-ui/core/Container';
 import SearchFab                          from './components/searchFab/SearchFab'
 import Header                             from './components/Header/Header';
+import Trailer                            from './components/trailer/trailer'
 //import Footer                             from './components/Common/Footer'
 import Home                               from './pages/Home/home';
 // import Movie                               from './components/movie';
@@ -56,6 +57,7 @@ function App() {
                           </Switch>
                       </ Container>
                       <SearchFab />
+                      <Trailer />
                       {/* <Footer /> */}
                   </div>    
 

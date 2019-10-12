@@ -20,7 +20,7 @@ const Reducers = combineReducers({
     search: queryReducer,
     movieInfo: movieInfoReview,
     trailers: trailers,
-    search_Model: modalOfSearch
+    search_Model: modalOfSearch,
 
 
 })

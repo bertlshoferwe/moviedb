@@ -1,0 +1,37 @@
+@mixin for-phone-only-portrait {
+    @media (max-width: 599px) { @content; }
+  }
+  @mixin for-phone-landscape-up {
+    @media (min-width: 0px) and (orientation:landscape) { @content; }
+  }
+  @mixin for-tablet-portrait-up {
+    @media (min-width: 600px) and (orientation:portrait) { @content; }
+  }
+  @mixin for-tablet-landscape-up {
+    @media (min-width: 900px) and (orientation:landscape) { @content; }
+  }
+  @mixin for-desktop-up {
+    @media (min-width: 1200px) and (orientation:landscape) { @content; }
+  }
+
+  @include for-phone-only-portrait{
+    .trailerDialog{
+        background-color: rgba(0, 0, 0, 0.9) !important;
+        
+    }
+
+    .trailerDialogContent{
+        background-color: black !important;
+        box-shadow: 1px 2px 3px var(black);
+        padding:0 !important
+    }
+
+    .iframe{
+        width: 100%;
+        border:black !important
+    }
+  }
+  @include for-phone-landscape-up{}
+  @include for-tablet-portrait-up{}
+  @include for-tablet-landscape-up{}
+  @include for-desktop-up{}
