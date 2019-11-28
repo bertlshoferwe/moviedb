@@ -4,7 +4,7 @@ import authReducer from './firebaseAuth/reducer'
 import spinner from './ui/spinner/reducer'
 import homeReducer from './apiMedia/popularMedia/reducer'
 import queryReducer from './apiMedia/searchQuery/reducer'
-import movieInfoReview  from './apiMedia/mediaInfo/reducer'
+import mediaPageInfo  from './apiMedia/mediaInfo/reducer'
 import trailers from './apiMedia/trailerInfo/reducer'
 import modalOfSearch from './ui/searchModal/reducer'
 
@@ -18,7 +18,7 @@ const Reducers = combineReducers({
     spinner: spinner,
     home: homeReducer,
     search: queryReducer,
-    movieInfo: movieInfoReview,
+    mediaInfo: mediaPageInfo,
     trailers: trailers,
     search_Model: modalOfSearch,
 

@@ -72,7 +72,7 @@ registerButtonPress() {
                                     </Typography>
                                    
                                     <Button variant="contained" onClick={this.dialogToggle}>
-                                        Default
+                                        Login
                                     </Button>
                                 
                             </Toolbar>

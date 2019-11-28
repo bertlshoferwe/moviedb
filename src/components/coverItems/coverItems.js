@@ -15,7 +15,6 @@ class CoverItems extends Component {
 
     render() {
 
-
         const { imageUrl } = this.state
 
         const results = [];        

@@ -22,7 +22,7 @@ import { Card, Dialog, TextField, Button} from '@material-ui/core';
             <Button
               label={( this.state.login )? 'Login' : 'Register'}
               primary={true}
-              onClick={( this.state.login)? loginButtonPress : registerButtonPress }
+              onClick={( this.state.login )? loginButtonPress : registerButtonPress }
             />,
             <Button
               label="Close"

@@ -11,7 +11,7 @@
     @media (min-width: 900px) and (orientation:landscape) { @content; }
   }
   @mixin for-desktop-up {
-    @media (min-width: 1200px) and (orientation:landscape) { @content; }
+    @media (min-width: 1150px) and (orientation:landscape) { @content; }
   }
  
   .slider{
@@ -24,6 +24,7 @@
     overflow-x: scroll;
     scrollbar-width: none;
     -ms-overflow-style:none;
+    margin-bottom: 5vh ;
     &::-webkit-scrollbar{
       width:0;
       background:transparent
@@ -49,13 +50,12 @@
     }
 
     .topHomeImageWrapper{
-      max-width: 100vw; 
       margin: auto;
       position:absolute; 
       .image{
        -webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
       mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0) 50%);
-      width: 100vw;
+      width: 100%;
       }
       .buttonWrapper{
         width: 100vw;
@@ -110,13 +110,15 @@
     .overlayText{
       color:white !important
     }
-    .lowerHomePage{
-      margin-top:30vh
-    }
+    
   @include for-phone-only-portrait{
     .topHomeImageWrapper{
       top:3.5rem; 
       left:0; 
+      width: 100vw;
+      .image{
+        min-height: 30vh;
+      }
       .buttonWrapper{
         .mediaPopButton{
           bottom: 10%;
@@ -128,6 +130,9 @@
         }
       }
     };
+    .lowerHomePage{
+      margin-top:30vh
+    }
     .largeCard{
       min-width: 75vw !important;
       margin: 2vw !important;
@@ -155,9 +160,137 @@
       font-size: 7.5rem;
       margin-top:-45% !important;
     }
+    
 
   }
-  @include for-phone-landscape-up{}
-  @include for-tablet-portrait-up{}
-  @include for-tablet-landscape-up{}
-  @include for-desktop-up{}
+  @include for-phone-landscape-up{
+
+    .topHomeImageWrapper{
+      top:3.9rem; 
+      left:0vw; 
+      width: 100vw;
+      .image{
+        min-height: 30vh;
+        max-height: 70vh;
+      }
+      .buttonWrapper{
+        .mediaPopButton{
+          bottom: 10%;
+          right: 5vw;
+        }
+        .fabOutline{
+          bottom: 45%;
+          right: 48%;
+        }
+      }
+    };
+    .lowerHomePage{
+      margin-top:65vh
+    }
+    .largeCard{
+      min-width: 30vw !important;
+      margin: 2vw !important;
+    }
+    .largeCardMedia{
+      min-height: 20vh !important;
+      padding-top: 40%;
+    }
+    .largeIconMedia{
+      font-size: 7.5rem;
+      margin-top:-25% !important;
+    }
+    .Card{
+      min-width: 25vh !important;
+      margin: 2vw !important;
+    }
+    .CardMedia{
+      min-height: 26vh !important;
+      padding-top: 56.25%;
+    }
+    .CardOverlay{
+      max-height:10%;
+    }
+    .iconMedia{
+      font-size: 7.5rem;
+      margin-top:-45% !important;
+    }
+    
+
+  }
+  @include for-tablet-portrait-up{
+
+    .topHomeImageWrapper{
+      top:4rem; 
+      left:0; 
+      width: 100vw;
+      .image{
+        min-height: 30vh;
+      }
+      .buttonWrapper{
+        .mediaPopButton{
+          bottom: 10%;
+          right: 5vw;
+        }
+        .fabOutline{
+          bottom: 45%;
+          right: 48%;
+        }
+      }
+    };
+    .lowerHomePage{
+      margin-top:40vh !important;
+    }
+    .largeCard{
+      min-width: 50vw !important;
+      margin: 2vw !important;
+    }
+    .largeCardMedia{
+      min-height: 18vh !important;
+      padding-top: 40%;
+    }
+    .largeIconMedia{
+      font-size: 7.5rem;
+      margin-top:-25% !important;
+    }
+    .Card{
+      min-width: 19vh !important;
+      margin: 2vw !important;
+    }
+    .CardMedia{
+      min-height: 20vh !important;
+      padding-top: 56.25%;
+    }
+    .CardOverlay{
+      max-height:10%;
+    }
+    .iconMedia{
+      font-size: 7.5rem;
+      margin-top:-45% !important;
+    }
+
+
+  }
+  @include for-desktop-up{
+
+    .slideWrapper{
+     
+      &::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3) !important;
+        border-radius: 10px !important;
+        background-color: transparent !important;
+      }
+  
+      &::-webkit-scrollbar{
+        height: 10px !important;
+        border-radius: 10px !important;
+        background-color: transparent !important;
+      }
+  
+      &::-webkit-scrollbar-thumb{
+        border-radius: 10px !important;
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3) !important;
+        background-color: #555 !important;
+      }
+    }
+
+  }

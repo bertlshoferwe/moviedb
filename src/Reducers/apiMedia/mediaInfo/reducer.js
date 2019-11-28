@@ -9,7 +9,7 @@ const INITIAL_STATE =  {
         overview:'',
         total_results:'',
         reviews:{
-            total_results:0,
+            total_results:0, 
             results:{
                 0:{
                     author:'',

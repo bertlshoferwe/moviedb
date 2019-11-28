@@ -3,7 +3,7 @@ import React, { Component }     from 'react';
 import { connect }              from 'react-redux';
 import { closeTrailer } from'../../Reducers';
 import {withRouter} from 'react-router-dom';
-import { Dialog, DialogContent } from '@material-ui/core';
+import { Dialog } from '@material-ui/core';
 import './trailer.scss'
 
 
@@ -24,9 +24,6 @@ import './trailer.scss'
 
     render() {
         const { isTrailerOpen, trailerKey } = this.props
-
-       console.log(trailerKey)
-       console.log(isTrailerOpen)
  
         const trailerPopup =   <Dialog 
                                 open={isTrailerOpen} 
@@ -41,6 +38,7 @@ import './trailer.scss'
                                 src={ "https://www.youtube.com/embed/" + trailerKey.key } 
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                                 allowFullScreen
+                                frameBorder="0"
                                 >
                                 </iframe>
 

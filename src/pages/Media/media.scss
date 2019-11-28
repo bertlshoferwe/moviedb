@@ -13,23 +13,16 @@
   @mixin for-desktop-up {
     @media (min-width: 1200px) and (orientation:landscape) { @content; }
   }
-
+ 
+  .mediaPoster{
+    height:25vh;
+    width:35vw
+}
+  
   @include for-phone-only-portrait{
-    .trailerDialog{
-        background-color: rgba(0, 0, 0, 0.9) !important;
-        
-    }
 
-    .trailerDialogContent{
-        background-color: black !important;
-        box-shadow: 1px 2px 3px var(rgba(0, 0, 0, 0.9));
-        padding:0 !important
-    }
+    
 
-    .iframe{
-        width: 100%;
-        border:black !important
-    }
   }
   @include for-phone-landscape-up{}
   @include for-tablet-portrait-up{}

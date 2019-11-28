@@ -14,7 +14,7 @@ import Header                             from './components/Header/Header';
 import Trailer                            from './components/trailer/trailer'
 //import Footer                             from './components/Common/Footer'
 import Home                               from './pages/Home/home';
-// import Movie                               from './components/movie';
+import Movie                               from './pages/Media/movie';
 // import Tv                                  from './components/tv';
 // import Person                             from './components/person';
 // import SearchResults                from './components/searchResult'; 
@@ -49,7 +49,7 @@ function App() {
                       < Container className='pageContentLayout'>
                           <Switch>
                               <Route exact path="/" component={Home} />
-                                <Route path="/movie" component={Home} /> 
+                                <Route path="/movie" component={Movie} /> 
                                 <Route path="/tv" component={Home} />
                                 <Route path="/person/" component={Home} />
                                 <Route path="/searchResults" component={Home} /> 
