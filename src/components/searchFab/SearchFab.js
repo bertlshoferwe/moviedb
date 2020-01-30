@@ -50,7 +50,7 @@ import './fab.scss'
                 case 'movie':
                    return( <ListItem key={results.id} button onClick={() => {this.pageNavigate(results)} } >
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar className='avatar'>
                                 <i className="material-icons movieIcon ">movie</i>
                             </Avatar>
                         </ListItemAvatar>
@@ -60,7 +60,7 @@ import './fab.scss'
                 case 'tv':
                     return(<ListItem key={results.id}  button onClick={() => {this.pageNavigate(results)} } >
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar className='avatar'>
                                 <i className="material-icons tvIcon ">tv</i>
                             </Avatar>
                         </ListItemAvatar>
@@ -70,7 +70,7 @@ import './fab.scss'
                 case 'person':
                    return(<ListItem key={results.id} button onClick={() => {this.pageNavigate(results)} } >
                         <ListItemAvatar>
-                            <Avatar>
+                            <Avatar className='avatar'>
                                 <i className="material-icons personIcon ">person</i>
                             </Avatar>
                         </ListItemAvatar>
@@ -88,18 +88,21 @@ import './fab.scss'
                                 aria-labelledby="form-dialog-title"
                                 >
                                 <DialogTitle className='searchInput'>
-                                    <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        id="title"
-                                        label="Search for some media"
-                                        type="text"
-                                        onChange={ this.handleSearchChange }
-                                        value={searchValue}
-                                        fullWidth
-                                    />
+                                    <form autocomplete="off">
+                                        <TextField
+                                            autoComplete='off'
+                                            autoFocus
+                                            margin="dense"
+                                            id="title"
+                                            label="Search for some media"
+                                            type="text"
+                                            onChange={ this.handleSearchChange }
+                                            value={searchValue}
+                                            fullWidth
+                                        />
+                                    </form>
                                 </DialogTitle>
-                                <DialogContent>
+                                <DialogContent className='listWrapper'>
                                     <List className='listHeight'>
                                         {searchMedia}   
                                     </List>

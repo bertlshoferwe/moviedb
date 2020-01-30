@@ -1,10 +1,10 @@
-import React, { Component, Suspense, lazy } from 'react';
+import React, { Component } from 'react';
 import { connect }                          from 'react-redux';
 import { withRouter }                       from 'react-router'
 import queryString                          from 'query-string'
 import { getMovieInfo, pageNav }            from '../../Reducers';
 import MainInfo                             from '../../components/mediaPages/mainInfo'
-import { Typography }                       from '@material-ui/core';
+// import { Typography }                       from '@material-ui/core';
 import './media.scss'
 
 

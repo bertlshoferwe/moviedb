@@ -1,6 +1,6 @@
 
-import React, { Component }     from 'react';
-import { Card, Dialog, TextField, Button} from '@material-ui/core';
+import React, { Component, Fragment }     from 'react';
+import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, TextField, Button} from '@material-ui/core';
 
 
 
@@ -9,95 +9,110 @@ import { Card, Dialog, TextField, Button} from '@material-ui/core';
         super(props);
         this.state={ 
             login:true,
+
          };
 
     }
 
+
+
     render() {
-        
-        const { registerErrorEmail, registerErrorPassword, dialogToggle, dialogVisible, email, password, onEmailChange, onPasswordChange, loginButtonPress, registerButtonPress } = this.props
 
-        
-        const actions = [
-            <Button
-              label={( this.state.login )? 'Login' : 'Register'}
-              primary={true}
-              onClick={( this.state.login )? loginButtonPress : registerButtonPress }
-            />,
-            <Button
-              label="Close"
-              secondary={true}
-              onClick={dialogToggle}
-            />
-          ];
+        //// deconstruct props ////
+        const { dialogToggle, dialogVisible, loginDisplay, email, password, onEmailChange, onPasswordChange, loginButtonPress, registerButtonPress, loginError, registerError} = this.props
 
-        const View = (this.state.login)? <div className='app-flexColumn'>
-                                            <h1 className='app-center'>Login</h1>
-                                            <form className='app-flexColumn app-center'>
-                                                <Card>
-                                                    <TextField 
-                                                        name='username'
-                                                        floatingLabelText="Username"
-                                                        value={email}
-                                                        onChange={onEmailChange}
-                                                    />
-                                                
-                                                    <TextField 
-                                                        name='password'
-                                                        floatingLabelText="Password"
-                                                        value={password}
-                                                        onChange={onPasswordChange}
-                                                    />
-                                               </Card> 
-                                            </form>
-                                            <div>
-                                                <Button onClick={ () =>{ this.setState({ login:false})}}>
-                                                    Register
-                                                </Button>
-                                            </div>    
-                                        </div>
-                                    :
-                                    <div className='app-flexColumn'>
-                                        <h1 className='app-center'>Register</h1>
-                                            <form className='app-flexColumn app-center'>
-                                            <Card>
-                                                <TextField 
-                                                    name='username'
-                                                    floatingLabelText="Username"
+        const emailText= (loginDisplay)?  <TextField 
+                                                    error={(loginError.includes('email') )}
+                                                    autoFocus
+                                                    name='Email'
+                                                    label="Email"
+                                                    type="email"
                                                     value={email}
                                                     onChange={onEmailChange}
-                                                    errorText={registerErrorEmail}
+                                                    helperText={(loginError.includes('email')? 'Invalid Email' : '' )}
                                                 />
-                                            
+                                                :
                                                 <TextField 
-                                                    name='password'
-                                                    floatingLabelText="Password"
-                                                    value={password}
-                                                    onChange={onPasswordChange}
-                                                    errorText={registerErrorPassword}
-                                                />
-                                            </Card>                                        
-                                            </form>
-                                            <div>
-                                                <Button onClick={ () =>{ this.setState({ login:true})}}>
-                                                    Go back to login
+                                                    error={(registerError.includes('email') )}
+                                                    autoFocus
+                                                    name='Email'
+                                                    label="Email"
+                                                    type="email"
+                                                    value={email}
+                                                    onChange={onEmailChange}
+                                                    helperText={(registerError.includes('email')? 'Invalid Email' : '' )}
+                                                />;
+
+            const passwordText = (loginDisplay)?  <TextField 
+                                                        error={(loginError.includes('password'))}
+                                                        name='password'
+                                                        label="Password"
+                                                        type="password"
+                                                        value={password}
+                                                        onChange={onPasswordChange}
+                                                        helperText={(loginError.includes('password')? 'Incorrect password' : '' )}
+                                                    />
+                                                    :
+                                                    <TextField 
+                                                        error={(registerError.includes('password'))}
+                                                        name='password'
+                                                        label="Password"
+                                                        type="password"
+                                                        value={password}
+                                                        onChange={onPasswordChange}
+                                                        helperText={(registerError.includes('password')? 'Password must be atleast 6 characters' : '' )}
+                                                    />
+
+
+            const dialogDisplay = <Dialog
+                                    open={ dialogVisible }
+                                    onClose={ () => {dialogToggle(false)} }
+                                    >
+                                        <DialogTitle>
+                                           { (loginDisplay)? 'Login' : 'Register'}
+                                        </DialogTitle>
+                                         <DialogContent>
+                                                <form>
+                                                    <Card>
+                                                        <CardContent className='loginTextFieldWrapper'>
+                                                          
+                                                            {emailText}
+                                                        
+                                                            {passwordText}
+
+                                                        </CardContent>
+                                                    </Card> 
+                                                </form>
+                                                <div>
+                                                   { (loginDisplay)? 
+                                                        <Button onClick={ () =>{ this.setState({ login:false})}}>
+                                                            Need to register
+                                                        </Button>
+                                                    :
+                                                        <Button onClick={ () =>{ this.setState({ login:true})}}>
+                                                            Try Login?
+                                                        </Button>
+                                                    }
+                                                </div>                                                     
+                                            </DialogContent>
+
+                                            <DialogActions>
+                                                <Button color='primary' onClick={( loginDisplay )? loginButtonPress : registerButtonPress } >
+                                                    {( loginDisplay )? 'Login' : 'Register'}
                                                 </Button>
-                                            </div>  
-                                    </div>
+
+                                                <Button color='secondary' onClick={ () => {dialogToggle(false)} } >
+                                                    Close
+                                                </Button>
+                                            </DialogActions>
+
+                                </Dialog>
         
         return(
-            
-            <Dialog
-                modal={false}
-                actions={actions}
-                open={ dialogVisible }
-                onRequestClose={ dialogToggle }
-                contentClassName='app-dialogContent'
-                paperClassName='app-dialogPaper' >
-               
-                {View}
 
-            </Dialog>
+            <Fragment>
+                {dialogDisplay}
+            </Fragment>
 
         );
     }

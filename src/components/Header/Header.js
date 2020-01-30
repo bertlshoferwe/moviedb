@@ -1,7 +1,7 @@
 
 import React, { Component }     from 'react';
 import { connect }              from 'react-redux';
-import { emailChanged, passwordChanged, loginUser, registerUser } from'../../Reducers';
+import { emailChanged, passwordChanged, toggleModal, loginUser, registerUser, signOutUser } from'../../Reducers';
 import {withRouter} from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button} from '@material-ui/core'
 import LoginDialog from './loginDialog'
@@ -18,6 +18,7 @@ import './header.scss'
             registerErrorEmail: '',
             registerErrorPassword: '',
          };
+         this.signOut = this.signOut.bind(this)
          this.titleClick = this.titleClick.bind(this)
          this.dialogToggle = this.dialogToggle.bind(this)
          this.onEmailChange = this.onEmailChange.bind(this)
@@ -26,10 +27,12 @@ import './header.scss'
          this.registerButtonPress = this.registerButtonPress.bind(this)
     }
 
-dialogToggle() {
-    this.setState({
-        dialogVisible:!this.state.dialogVisible
-})
+dialogToggle(data) {
+    console.log(data)
+    this.props.toggleModal(data)
+}
+signOut(){
+    this.props.signOutUser()
 }
 titleClick() {
     this.props.history.push('/')
@@ -50,19 +53,10 @@ loginButtonPress() {
 registerButtonPress() {
     const { email, password } = this.props;
    
-    // if( registerEmailError === '' && registerPasswordError === "") {
-    //     this.props.registerUser(email, password);
-    // }
-    
     this.props.registerUser( email, password ); 
 }
 
     render() {
-
-        // const loginButton = (this.props.user === null)?
-        //     <Button label="LogIn" onClick={this.dialogToggle} /> 
-        //     :
-        //     <Button label="LogOut" onClick={this.login}/>
 
         const titleBar = <AppBar className='appBar' position="fixed">
                             <Toolbar className='toolBar'>
@@ -71,41 +65,36 @@ registerButtonPress() {
                                         MovieDB
                                     </Typography>
                                    
-                                    <Button variant="contained" onClick={this.dialogToggle}>
-                                        Login
-                                    </Button>
+                                   { (this.props.user === '')?
+                                        <Button variant="contained" label="LogIn" onClick={() => {this.dialogToggle(true)} } >
+                                            Login
+                                        </Button> 
+                                        :
+                                        <Button variant="contained" label="LogOut" onClick={this.signOut}>
+                                            LogOut
+                                        </Button> 
+                                    }
                                 
                             </Toolbar>
                             </AppBar>
-        //<AppBar 
-        //                     // title="IMDB"
-        //                     className='header'
-        //                     // onTitleClick={this.titleClick}
-        //                     // showMenuIconButton={false}
-        //                     zDepth={1}
-        //                     // children={this.props.children}  
-        //                     // position="fixed"
-        //                     // iconElementRight={(this.props.user === null)?<Button label="LogIn" onClick={this.dialogToggle} /> : <Button label="LogOut" onClick={this.login} /> } 
-        //                 >
-        //                     Helllo
-        //                 </ AppBar>
+      
     
         return(
             <div>
                {titleBar}
                
                <LoginDialog 
-                    error={this.props.error}
-                    registerErrorEmail={this.state.registerErrorEmail}
-                    registerErrorPassword={this.state.registerErrorPassword}
+                    loginError={this.props.loginError}
+                    registerError={this.props.registerError}
                     dialogToggle={this.dialogToggle} 
-                    dialogVisible={this.state.dialogVisible} 
+                    dialogVisible={this.props.loginModalOpen} 
                     onEmailChange={this.onEmailChange}
                     email={this.props.email}
                     onPasswordChange={this.onPasswordChange}
                     password={this.props.password}
                     loginButtonPress={this.loginButtonPress}
                     registerButtonPress={this.registerButtonPress}
+                    loginDisplay ={ this.props.loginDisplay }
                 />
             </div>
 
@@ -116,22 +105,24 @@ const mapStateToProps = state => {
     const user = state.auth.user;
     const email = state.auth.email;
     const password = state.auth.password;
-    const error = state.auth.error;
+    const loginError = state.auth.loginError;
     const success = state.auth.success;
     const registerError = state.auth.registerError;
     const loading = state.auth.loading;
-    const registerEmailError = state.auth.registerEmailError;
-    const registerPasswordError = state.auth.registerPasswordError;
+    const loginDisplay= state.auth.loginDisplay;
+    const loginModalOpen = state.auth.loginModalOpen
 
-        return{ user, email, password, error, success, registerError, loading, registerEmailError, registerPasswordError };
+        return{ user, email, password, loginError, success, registerError, loading, loginDisplay, loginModalOpen };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return{
+        signOutUser:() => dispatch(signOutUser( )),   
+        toggleModal: (data) => dispatch(toggleModal(data)),
         emailChanged:(text) => dispatch(emailChanged(text)), 
         passwordChanged:(text) => dispatch(passwordChanged(text)),
         loginUser:(email, password) => dispatch(loginUser(email, password)),
-        registerUser:(email, password) => dispatch(registerUser(email, password)),   
+        registerUser:(email, password) => dispatch(registerUser(email, password)),
     };
 };
 

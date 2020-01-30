@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { getHomeInfo, MovieTrailer, TvTrailer, pageNav } from '../../Reducers';
 import { Typography } from '@material-ui/core';
-import './home.scss'
+import './_home.scss'
 const CoverItems = lazy(() => import('../../components/coverItems/coverItems'));
 const BackgroundImage = lazy(() => import('../../components/backgroundImage/backgroundImage'));
 

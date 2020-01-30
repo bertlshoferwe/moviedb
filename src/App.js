@@ -7,6 +7,7 @@ import { createBrowserHistory }           from 'history'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import thunk                                from 'redux-thunk';
 import Reducers                           from './Reducers';
+import firebase                           from 'firebase';
 import './style.scss';
 import Container                           from '@material-ui/core/Container';
 import SearchFab                          from './components/searchFab/SearchFab'
@@ -18,7 +19,6 @@ import Movie                               from './pages/Media/movie';
 // import Tv                                  from './components/tv';
 // import Person                             from './components/person';
 // import SearchResults                from './components/searchResult'; 
-
 
 
 const history = createBrowserHistory()
@@ -36,7 +36,21 @@ const store = createStore(
   ),
 )
 
+
+  const fireBaseConfig = {
+    apiKey: "AIzaSyCQOo5d0vzdZm1jwKJ4GsAqbmGJlZPP9wU",
+    authDomain: "movie-database-c489c.firebaseapp.com",
+    databaseURL: "https://movie-database-c489c.firebaseio.com",
+    projectId: "movie-database-c489c",
+    storageBucket: "movie-database-c489c.appspot.com",
+    messagingSenderId: "337082456483"
+  };
+
+  firebase.initializeApp(fireBaseConfig);
+
+
 function App() {
+
 
     return ( 
           <Provider store={store}>

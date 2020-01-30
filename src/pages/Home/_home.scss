@@ -1,19 +1,6 @@
-@mixin for-phone-only-portrait {
-    @media (max-width: 599px) { @content; }
-  }
-  @mixin for-phone-landscape-up {
-    @media (min-width: 0px) and (orientation:landscape) { @content; }
-  }
-  @mixin for-tablet-portrait-up {
-    @media (min-width: 600px) and (orientation:portrait) { @content; }
-  }
-  @mixin for-tablet-landscape-up {
-    @media (min-width: 900px) and (orientation:landscape) { @content; }
-  }
-  @mixin for-desktop-up {
-    @media (min-width: 1150px) and (orientation:landscape) { @content; }
-  }
- 
+@import '../../style.scss'; 
+
+
   .slider{
     display: flex;
     overflow: hidden;

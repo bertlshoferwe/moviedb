@@ -1,18 +1,4 @@
-@mixin for-phone-only-portrait {
-    @media (max-width: 599px) { @content; }
-  }
-  @mixin for-phone-landscape-up {
-    @media (min-width: 0px) and (orientation:landscape) { @content; }
-  }
-  @mixin for-tablet-portrait-up {
-    @media (min-width: 600px) and (orientation:portrait) { @content; }
-  }
-  @mixin for-tablet-landscape-up {
-    @media (min-width: 900px) and (orientation:landscape) { @content; }
-  }
-  @mixin for-desktop-up {
-    @media (min-width: 1200px) and (orientation:landscape) { @content; }
-  }
+@import '../../style.scss';
  
   .fabloc{
       position: fixed;
@@ -31,11 +17,60 @@
   }
   .listHeight{
     z-index: 1;
-    max-height:8rem !important
+    max-height:8rem !important;
+
+  }
+  .avatar{
+   
+    .movieIcon{
+      margin: 0 auto;
+      font-size: 1.8rem;
+      color: $red
+    }
+    .tvIcon{
+      margin: 0 auto;
+      font-size: 1.8rem;
+      color: $blue
+    }
+    .personIcon{
+      margin: 0 auto;
+      font-size: 1.8rem;
+      color: $green
+    }
   }
 
-  @include for-phone-only-portrait{}
-  @include for-phone-landscape-up{}
-  @include for-tablet-portrait-up{}
+
+  @include for-phone-only-portrait{
+
+    .listHeight{
+      max-height:60vh !important;
+      width:60vw
+    }
+
+  }
+
+  @include for-phone-landscape-up{
+
+    .listHeight{
+      max-height: 70vh !important;
+      width:40vw
+    }
+
+  }
+  @include for-tablet-portrait-up{
+
+    .listHeight{
+      max-height: 70vh !important;
+      width:60vw
+    }
+
+  }
   @include for-tablet-landscape-up{}
-  @include for-desktop-up{}
+
+  @include for-desktop-up{
+    
+    .listHeight{
+      max-height:60vh !important;
+      width:30vw
+    }
+  }

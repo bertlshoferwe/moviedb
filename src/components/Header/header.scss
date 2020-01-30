@@ -1,18 +1,4 @@
-@mixin for-phone-only-portrait {
-    @media (max-width: 599px) { @content; }
-  }
-  @mixin for-phone-landscape-up {
-    @media (min-width: 0px) and (orientation:landscape) { @content; }
-  }
-  @mixin for-tablet-portrait-up {
-    @media (min-width: 600px) and (orientation:portrait) { @content; }
-  }
-  @mixin for-tablet-landscape-up {
-    @media (min-width: 900px) and (orientation:landscape) { @content; }
-  }
-  @mixin for-desktop-up {
-    @media (min-width: 1200px) and (orientation:landscape) { @content; }
-  }
+@import '../../style.scss';
  
 .appBar{
   background-color:rgba(245, 4, 4, 0.575) !important;
@@ -28,6 +14,15 @@
     text-align: center;
     justify-content: center;
     align-self: center;
+  }
+
+  /////////////
+
+  
+  .loginTextFieldWrapper{
+    display:flex !important;
+    flex-direction: column !important;
+
   }
 
   @include for-phone-only-portrait{}

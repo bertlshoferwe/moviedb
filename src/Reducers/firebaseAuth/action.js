@@ -8,6 +8,9 @@ export const actionTypes = {
     REGISTER_USER_SUCCESS     : 'register_user_success',
     REGISTER_USER_FAIL        : 'register_user_fail',
     REGISTER_USER             : 'register_user',
+    SIGN_OUT                  : 'sign_out',
+    OPEN_DIALOG               : 'open_dialog',
+    CLOSE_DIALOG              : 'close_dialog'
   }
 
   //Handling user input
@@ -25,6 +28,22 @@ export const actionTypes = {
       payload: text
     };
   };
+ 
+  export const toggleModal = (data) => {
+    console.log(data)
+    if (data = true) {
+      return {
+        type: actionTypes.OPEN_DIALOG,
+      };
+    }
+    if ( data = false) {
+      return {
+        type: actionTypes.CLOSE_DIALOG,
+      };
+    }
+   
+  };
+
   
   //handleing user login
   
@@ -64,9 +83,8 @@ export const actionTypes = {
   };
   
   const registerUserFail = (dispatch, error) => {
-    dispatch({ type: actionTypes.REGISTER_USER_FAIL,
-               payload: error.message
-    });
+            dispatch( { type: actionTypes.REGISTER_USER_FAIL,
+                        payload: error.message })
   };
   
   const registerUserSuccess = (dispatch, user) => {
@@ -75,3 +93,14 @@ export const actionTypes = {
       payload: user
      });  
   };
+
+ /////// handeling user logout /////
+
+ export const signOutUser = () => {
+  return (dispatch) => {
+
+    firebase.auth().signOut()
+          .then(dispatch(( { type: actionTypes.SIGN_OUT } )))
+          .catch((error) => registerUserFail(dispatch,error));
+  };
+};
