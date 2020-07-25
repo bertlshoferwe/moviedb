@@ -28,7 +28,6 @@ import './header.scss'
     }
 
 dialogToggle(data) {
-    console.log(data)
     this.props.toggleModal(data)
 }
 signOut(){
@@ -88,7 +87,7 @@ registerButtonPress() {
                     registerError={this.props.registerError}
                     dialogToggle={this.dialogToggle} 
                     dialogVisible={this.props.loginModalOpen} 
-                    onEmailChange={this.onEmailChange}
+                    onEmailChange={this.onEmailChange} 
                     email={this.props.email}
                     onPasswordChange={this.onPasswordChange}
                     password={this.props.password}

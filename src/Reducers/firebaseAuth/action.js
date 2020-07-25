@@ -30,13 +30,12 @@ export const actionTypes = {
   };
  
   export const toggleModal = (data) => {
-    console.log(data)
-    if (data = true) {
+    if (data === true) {
       return {
         type: actionTypes.OPEN_DIALOG,
       };
     }
-    if ( data = false) {
+    if ( data === false) {
       return {
         type: actionTypes.CLOSE_DIALOG,
       };

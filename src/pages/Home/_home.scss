@@ -121,8 +121,8 @@
       margin-top:30vh
     }
     .largeCard{
-      min-width: 75vw !important;
-      margin: 2vw !important;
+      min-width: 60vw !important;
+      margin: 4vw !important;
     }
     .largeCardMedia{
       min-height: 20vh !important;
@@ -148,6 +148,22 @@
       margin-top:-45% !important;
     }
     
+    .slideWrapper{
+     
+      &::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.0) !important;
+        background-color: transparent !important;
+      }
+  
+      &::-webkit-scrollbar{
+        background-color: transparent !important;
+      }
+  
+      &::-webkit-scrollbar-thumb{
+        box-shadow: inset 0 0 6px rgba(0,0,0,0) !important;
+        background-color: transparent !important;
+      }
+    }
 
   }
   @include for-phone-landscape-up{
@@ -259,6 +275,22 @@
   }
   @include for-desktop-up{
 
+    .topHomeImageWrapper{
+      .image{
+        min-height: 80vh;
+      }
+      .buttonWrapper{
+        .mediaPopButton{
+          bottom: 25%;
+          right: 15vw;
+        }
+        .fabOutline{
+          bottom: 50%;
+          right: 48%;
+        }
+      }
+    }
+
     .slideWrapper{
      
       &::-webkit-scrollbar-track{
@@ -278,6 +310,11 @@
         box-shadow: inset 0 0 6px rgba(0,0,0,.3) !important;
         background-color: #555 !important;
       }
+    }
+
+    .largeCard{
+      min-width: 20vw !important;
+      margin: 2vw !important;
     }
 
   }

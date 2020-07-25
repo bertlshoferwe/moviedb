@@ -63,7 +63,6 @@ import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, T
                                                         helperText={(registerError.includes('password')? 'Password must be atleast 6 characters' : '' )}
                                                     />
 
-
             const dialogDisplay = <Dialog
                                     open={ dialogVisible }
                                     onClose={ () => {dialogToggle(false)} }
