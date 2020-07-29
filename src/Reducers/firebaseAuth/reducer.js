@@ -7,7 +7,7 @@ import { actionTypes }  from './action'
     loginError: '',
     success: '',
     registerError: '',
-    loginDisplay: false,
+    loginDisplay: true,
     loginModalOpen: false,
   };
   
@@ -37,7 +37,12 @@ import { actionTypes }  from './action'
       case actionTypes.REGISTER_USER_FAIL:
         return{ ...state, ...INITIAL_STATE, registerError:action.payload, loginDisplay: false, loginModalOpen: true };
       case actionTypes.SIGN_OUT:
-        return { ...state, user: ''}
+        return { ...state, user: ''};
+      // switch between login and register
+      case actionTypes.LOGIN_SHOW:
+        return{ ...state, loginDisplay: true };
+      case actionTypes.REGISTER_SHOW:
+        return{ ...state, loginDisplay: false };
       default:
         return state;
     }

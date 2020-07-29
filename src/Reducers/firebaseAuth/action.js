@@ -10,7 +10,9 @@ export const actionTypes = {
     REGISTER_USER             : 'register_user',
     SIGN_OUT                  : 'sign_out',
     OPEN_DIALOG               : 'open_dialog',
-    CLOSE_DIALOG              : 'close_dialog'
+    CLOSE_DIALOG              : 'close_dialog',
+    LOGIN_SHOW                : 'login_show',
+    REGISTER_SHOW             : 'register_show'
   }
 
   //Handling user input
@@ -38,6 +40,20 @@ export const actionTypes = {
     if ( data === false) {
       return {
         type: actionTypes.CLOSE_DIALOG,
+      };
+    }
+   
+  };
+
+  export const toggleLogin = (data) => {
+    if (data === true) {
+      return {
+        type: actionTypes.LOGIN_SHOW,
+      };
+    }
+    if ( data === false) {
+      return {
+        type: actionTypes.REGISTER_SHOW,
       };
     }
    

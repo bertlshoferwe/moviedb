@@ -277,15 +277,16 @@
 
     .topHomeImageWrapper{
       .image{
-        min-height: 80vh;
+        min-height: 100vh;
+        image-rendering: auto !important;
       }
       .buttonWrapper{
         .mediaPopButton{
-          bottom: 25%;
+          bottom: 40%;
           right: 15vw;
         }
         .fabOutline{
-          bottom: 50%;
+          bottom: 60%;
           right: 48%;
         }
       }

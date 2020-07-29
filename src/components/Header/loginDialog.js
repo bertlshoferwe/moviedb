@@ -1,6 +1,6 @@
 
 import React, { Component, Fragment }     from 'react';
-import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, TextField, Button} from '@material-ui/core';
+import { Dialog, DialogActions, DialogTitle, DialogContent, TextField, Button} from '@material-ui/core';
 
 
 
@@ -19,7 +19,7 @@ import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, T
     render() {
 
         //// deconstruct props ////
-        const { dialogToggle, dialogVisible, loginDisplay, email, password, onEmailChange, onPasswordChange, loginButtonPress, registerButtonPress, loginError, registerError} = this.props
+        const { dialogToggle, dialogVisible, loginDisplay, email, password, onEmailChange, onPasswordChange, loginButtonPress, registerButtonPress, loginError, registerError, loginToggle } = this.props
 
         const emailText= (loginDisplay)?  <TextField 
                                                     error={(loginError.includes('email') )}
@@ -30,6 +30,8 @@ import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, T
                                                     value={email}
                                                     onChange={onEmailChange}
                                                     helperText={(loginError.includes('email')? 'Invalid Email' : '' )}
+                                                    margin="normal"
+                                                    variant="outlined"
                                                 />
                                                 :
                                                 <TextField 
@@ -41,6 +43,8 @@ import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, T
                                                     value={email}
                                                     onChange={onEmailChange}
                                                     helperText={(registerError.includes('email')? 'Invalid Email' : '' )}
+                                                    margin="normal"
+                                                    variant="outlined"
                                                 />;
 
             const passwordText = (loginDisplay)?  <TextField 
@@ -51,6 +55,8 @@ import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, T
                                                         value={password}
                                                         onChange={onPasswordChange}
                                                         helperText={(loginError.includes('password')? 'Incorrect password' : '' )}
+                                                        margin="normal"
+                                                        variant="outlined"
                                                     />
                                                     :
                                                     <TextField 
@@ -61,6 +67,8 @@ import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, T
                                                         value={password}
                                                         onChange={onPasswordChange}
                                                         helperText={(registerError.includes('password')? 'Password must be atleast 6 characters' : '' )}
+                                                        margin="normal"
+                                                        variant="outlined"
                                                     />
 
             const dialogDisplay = <Dialog
@@ -72,24 +80,23 @@ import { Card, CardContent, Dialog, DialogActions, DialogTitle, DialogContent, T
                                         </DialogTitle>
                                          <DialogContent>
                                                 <form>
-                                                    <Card>
-                                                        <CardContent className='loginTextFieldWrapper'>
+                                                    <div className='loginTextFieldWrapper'>
                                                           
                                                             {emailText}
                                                         
                                                             {passwordText}
 
-                                                        </CardContent>
-                                                    </Card> 
+                                                    </div> 
                                                 </form>
                                                 <div>
                                                    { (loginDisplay)? 
-                                                        <Button onClick={ () =>{ this.setState({ login:false})}}>
-                                                            Need to register
+                                                //    need to switch from using state to useing redux state
+                                                        <Button onClick={ () =>{ loginToggle(false) } }> 
+                                                            Register
                                                         </Button>
                                                     :
-                                                        <Button onClick={ () =>{ this.setState({ login:true})}}>
-                                                            Try Login?
+                                                        <Button onClick={ () =>{ loginToggle(true) } }>
+                                                            Login
                                                         </Button>
                                                     }
                                                 </div>                                                     

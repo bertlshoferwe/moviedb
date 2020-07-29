@@ -1,7 +1,7 @@
 
 import React, { Component }     from 'react';
 import { connect }              from 'react-redux';
-import { emailChanged, passwordChanged, toggleModal, loginUser, registerUser, signOutUser } from'../../Reducers';
+import { emailChanged, passwordChanged, toggleModal, loginUser, registerUser, signOutUser, toggleLogin } from'../../Reducers';
 import {withRouter} from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Button} from '@material-ui/core'
 import LoginDialog from './loginDialog'
@@ -25,6 +25,7 @@ import './header.scss'
          this.onPasswordChange = this.onPasswordChange.bind(this)
          this.loginButtonPress = this.loginButtonPress.bind(this)
          this.registerButtonPress = this.registerButtonPress.bind(this)
+         this.toggleLoginPress = this.toggleLoginPress.bind(this)
     }
 
 dialogToggle(data) {
@@ -55,6 +56,10 @@ registerButtonPress() {
     this.props.registerUser( email, password ); 
 }
 
+toggleLoginPress(data) {
+    this.props.toggleLogin(data); 
+}
+
     render() {
 
         const titleBar = <AppBar className='appBar' position="fixed">
@@ -65,11 +70,11 @@ registerButtonPress() {
                                     </Typography>
                                    
                                    { (this.props.user === '')?
-                                        <Button variant="contained" label="LogIn" onClick={() => {this.dialogToggle(true)} } >
+                                        <Button variant="contained" className="loginButton" label="LogIn" onClick={() => {this.dialogToggle(true)} } >
                                             Login
                                         </Button> 
                                         :
-                                        <Button variant="contained" label="LogOut" onClick={this.signOut}>
+                                        <Button variant="contained" className="loginButton" label="LogOut" onClick={this.signOut}>
                                             LogOut
                                         </Button> 
                                     }
@@ -94,6 +99,7 @@ registerButtonPress() {
                     loginButtonPress={this.loginButtonPress}
                     registerButtonPress={this.registerButtonPress}
                     loginDisplay ={ this.props.loginDisplay }
+                    loginToggle = { this.toggleLoginPress }
                 />
             </div>
 
@@ -122,6 +128,7 @@ const mapDispatchToProps = (dispatch) => {
         passwordChanged:(text) => dispatch(passwordChanged(text)),
         loginUser:(email, password) => dispatch(loginUser(email, password)),
         registerUser:(email, password) => dispatch(registerUser(email, password)),
+        toggleLogin:(data) => dispatch(toggleLogin(data))
     };
 };
 
