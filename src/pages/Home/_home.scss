@@ -9,6 +9,7 @@
     display: flex;
     flex-direction: row;
     overflow-x: scroll;
+    overflow-y: visible !important;
     scrollbar-width: none;
     -ms-overflow-style:none;
     margin-bottom: 5vh ;
@@ -50,38 +51,45 @@
         .mediaPopButton{
           position: absolute;
           color:white !important;
-          border-color: white !important
+          border-color: white !important;
+          :hover{
+            transform: scale(1.05) !important;
+          }
         }
         .fabOutline{
           position: absolute;
           background-color: transparent;
           color:white !important;
-          box-shadow: -1px 1px 20px (white) !important
+          box-shadow: -1px 1px 20px (white) !important;
+          :hover{
+            transform: scale(1.2) !important;
+          }
         }
       }
     };
     .largeCard{
       border-radius: 10 !important;
       box-shadow: 2.5px 2.5px 4px 3px rgba(0,0,0,0.75) !important;
+      overflow: hidden !important;
     }
     .largeCardMedia{
       position: 'relative' !important;
-      height: 100% !important;
       text-align: center !important;
     }
     .Card{
       border-radius: 10 !important;
       box-shadow: 2.5px 2.5px 4px 3px rgba(0,0,0,0.75) !important;
+      overflow: visible !important;
     }
     .CardMediaWrapper{
       position: relative;
-      height: 100% !important
+      height: 100% !important;
+      overflow: hidden !important;
     }
     .CardMedia{
       position: 'relative' !important;
       margin: auto !important; 
       text-align: center !important;
-      
     }
     .CardOverlay{
       display:flex;
@@ -313,9 +321,17 @@
       }
     }
 
+    .Card{
+      :hover{
+        transform: scale(1.05) !important;
+      }
+    }
     .largeCard{
       min-width: 20vw !important;
       margin: 2vw !important;
+      :hover{
+        transform: scale(1.05) !important;
+      }
     }
 
   }

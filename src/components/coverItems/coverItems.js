@@ -165,7 +165,7 @@ class CoverItems extends Component {
 
 
         return (
-<div className = {this.props.styleProp}> >
+<div className = {this.props.styleProp}> 
 
     {results}
 

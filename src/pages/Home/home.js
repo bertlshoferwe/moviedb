@@ -1,4 +1,4 @@
-import React, { Component, Suspense, lazy } from 'react';
+import React, { Component, Suspense, lazy, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { getHomeInfo, MovieTrailer, TvTrailer, pageNav } from '../../Reducers';
@@ -61,7 +61,7 @@ class Home extends Component {
         document.title = 'Movie Database'
 
         //setting up how page will display
-        const displayPage = <div>
+        const displayPage = <Fragment>
                                 {/* Top Popular packground  */}
                             <Suspense fallback={<div>Loading...</div>}>
                                 < BackgroundImage 
@@ -80,7 +80,7 @@ class Home extends Component {
                                 </Typography>
 
                                 <div className = 'slider'>
-                                    <CoverItems data={this.props.moviePopular} 
+                                    <CoverItems data={this.props.moviePopular}  
                                                 overlay={false} 
                                                 styleProp={'slideWrapper'} 
                                                 selected={this.pageNavigate}
@@ -116,15 +116,15 @@ class Home extends Component {
                                 </div> 
                                 </div>
                             </Suspense>
-                            </div>
+                            </Fragment>
        
         
         return (
-                <div>
+                <Fragment  >
 
                     {displayPage}
 
-                </div>
+                </Fragment>
 
 
         );
