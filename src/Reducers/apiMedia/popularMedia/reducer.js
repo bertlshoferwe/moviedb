@@ -8,7 +8,7 @@ const INITIAL_STATE =  {
             "vote_count": '',
             "title": '',
             "release_date": '',
-            "original_title": '',
+            "original_name": '',
             "backdrop_path": '',
             "poster_path": '',
             "media_type": '',

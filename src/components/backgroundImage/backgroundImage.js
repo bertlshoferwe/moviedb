@@ -10,7 +10,7 @@ class BackgroundImage extends Component{
     }
 
     render() {
-
+console.log(this.props.data)
 
         const Image = 
                         <div className='topHomeImageWrapper'>
@@ -26,7 +26,10 @@ class BackgroundImage extends Component{
                                     </i>
                                 </Fab>
                                 <Button onClick={this.props.selected.bind( null,this.props.data[0] )}  variant="outlined" component="span" className='mediaPopButton' >
-                                    {( this.props.data[0].title.length > 0 )? this.props.data[0].title: 'More Info'}
+                                    {/* if then statement to display title of either the movie or tv show */}
+                                    { ( this.props.data[0].media_type === "tv")? ( this.props.data[0].original_name.length > 0 )? this.props.data[0].original_name: 'More Info' 
+                                        : 
+                                    ( this.props.data[0].title.length > 0 )? this.props.data[0].title: 'More Info' }
                                 </Button>
                             </div>
                         </div>

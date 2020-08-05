@@ -1,23 +1,68 @@
 @import '../../style.scss';
 
+.trailerDialog{
+  background-color: rgba(0, 0, 0, 0.815) !important;
+  
+}
+
+.trailerDialogContent{
+  background-color: black !important;
+  box-shadow: 1px 2px 3px var(rgba(0, 0, 0, 0.9));
+  position: absolute;
+  padding:0 !important;
+}
+.iframe{
+  border:black !important;
+}
+
   @include for-phone-only-portrait{
-    .trailerDialog{
-        background-color: rgba(0, 0, 0, 0.9) !important;
-        
-    }
-
     .trailerDialogContent{
-        background-color: black !important;
-        box-shadow: 1px 2px 3px var(rgba(0, 0, 0, 0.9));
-        padding:0 !important
+      top: 25vh;
+      left: 12.5vw;
     }
-
     .iframe{
-        width: 100%;
-        border:black !important
+      width: 75vw;
+      height: 25vh;
+    }
+   
+  }
+  @include for-phone-landscape-up{
+    .trailerDialogContent{
+      top: 12.5vh;
+      left: 25vw;
+    }
+    .iframe{
+      width: 50vw;
+      height: 75vh;
     }
   }
-  @include for-phone-landscape-up{}
-  @include for-tablet-portrait-up{}
-  @include for-tablet-landscape-up{}
-  @include for-desktop-up{}
+  @include for-tablet-portrait-up{
+    .trailerDialogContent{
+      top: 25vh;
+      left: 12.5vw;
+    }
+    .iframe{
+      width: 75vw;
+      height: 25vh;
+    }
+  }
+  @include for-tablet-landscape-up{
+    .trailerDialogContent{
+      top: 25vh;
+      left: 12.5vw;
+    }
+    .iframe{
+      width: 75vw;
+      height: 50vh;
+    }
+  }
+  @include for-desktop-up{
+    .trailerDialogContent{
+      top: 25vh;
+      left: 25vw;
+    }
+    .iframe{
+      width: 50vw;
+      height: 50vh;
+    }
+  }
