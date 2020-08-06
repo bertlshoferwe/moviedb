@@ -9,7 +9,7 @@
   "dependencies": {
     "@material-ui/core": "^4.4.0",
     "connected-react-router": "^4.5.0",
-    "firebase": "^6.5.0",
+    "firebase": "^7.17.1",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
     "node-sass": "^4.12.0",
