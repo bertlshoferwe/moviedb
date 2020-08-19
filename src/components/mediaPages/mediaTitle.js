@@ -23,7 +23,7 @@ import { Typography } from '@material-ui/core';
                 </Typography>
                 
                 <Typography className='meidaYear' variant='h6' align='justify'>
-                    { (data.title != undefined)? data.release_date.substr(0,4) :  data.first_air_date.substr(0,4) }
+                    { (data.title !== undefined)? data.release_date.substr(0,4) :  data.first_air_date.substr(0,4) }
                 </Typography>
             </div>
 
