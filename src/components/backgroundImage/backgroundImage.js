@@ -10,7 +10,6 @@ class BackgroundImage extends Component{
     }
 
     render() {
-console.log(this.props.data)
 
         const Image = 
                         <div className='topHomeImageWrapper'>

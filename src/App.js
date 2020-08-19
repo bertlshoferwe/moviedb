@@ -16,7 +16,7 @@ import Trailer                            from './components/trailer/trailer'
 //import Footer                             from './components/Common/Footer'
 import Home                               from './pages/Home/home';
 import Movie                               from './pages/Media/movie';
-// import Tv                                  from './components/tv';
+import Tv                                  from './pages/Media/tv';
 // import Person                             from './components/person';
 // import SearchResults                from './components/searchResult'; 
 
@@ -64,7 +64,7 @@ function App() {
                           <Switch>
                               <Route exact path="/" component={Home} />
                                 <Route path="/movie" component={Movie} /> 
-                                <Route path="/tv" component={Home} />
+                                <Route path="/tv" component={Tv} />
                                 <Route path="/person/" component={Home} />
                                 <Route path="/searchResults" component={Home} /> 
                                              

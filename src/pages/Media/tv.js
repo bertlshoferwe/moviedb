@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect }                          from 'react-redux';
 import { withRouter }                       from 'react-router'
 import queryString                          from 'query-string'
-import { getMovieInfo, pageNav }            from '../../Reducers';
+import { getTvInfo, pageNav }            from '../../Reducers';
 import MediaPoster                             from '../../components/mediaPages/mediaPoster'
 import MediaInfo                             from '../../components/mediaPages/mediaInfo'
 import MediaTitle                             from '../../components/mediaPages/mediaTitle'
@@ -25,7 +25,7 @@ class Movie extends Component {
 
         const info = queryString.parse(this.props.location.search);
         
-        this.props.getMovieInfo( info.id );
+        this.props.getTvInfo( info.id );
         
     }
 
@@ -49,12 +49,12 @@ class Movie extends Component {
         //setting up how page will display
         
         return (
-                <Card>
-                    <MediaPoster data={ mediaInfo }/>
-                    <MediaTitle data={mediaInfo } />
-                    <MediaInfo data={mediaInfo} />
+            <Card>
+                <MediaPoster data={ mediaInfo }/>
+                <MediaTitle data={mediaInfo } />
+                <MediaInfo data={mediaInfo} />
 
-                </Card>
+            </Card>
 
 
         );
@@ -63,14 +63,14 @@ class Movie extends Component {
 
 // connections to Redux
 const mapStateToProps = state => {
-    const mediaInfo = state.mediaInfo.movieInfo
+    const mediaInfo = state.mediaInfo.tvInfo
 
     return { mediaInfo };
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getMovieInfo: (data) => dispatch(getMovieInfo(data)),
+        getTvInfo: (data) => dispatch(getTvInfo(data)),
         pageNav: (data) => dispatch(pageNav(data)),
     };
 };

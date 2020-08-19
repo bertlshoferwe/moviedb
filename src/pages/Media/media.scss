@@ -1,13 +1,22 @@
 @import '../../style.scss';
  
-  .mediaPoster{
-    height:25vh;
-    width:35vw
-}
+  
   
   @include for-phone-only-portrait{
-
-    
+    .mediaPoster{
+      height: 25rem;
+      width: 15rem;
+      margin: 2vh 20% 4vh 20%;
+  }
+    .mediaTitleWrapper{
+      margin-left:4vw;
+      .mediaTitle{
+        max-width:85vw !important;
+      }
+      .meidaYear{
+        margin-left: 1vw;
+      }
+    }
 
   }
   @include for-phone-landscape-up{}
